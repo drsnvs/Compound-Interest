@@ -34,10 +34,62 @@ public class Calculate extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Calculate</title>");            
+            out.println("<title>Servlet Calculate</title><style>"
+                    + ".cal{"
+                    + "background-color: blanchedalmond;"
+                    + "border:5px solid black;}"
+                    + ".set{"
+                    + "margin: 10px;"
+                    + "padding: 15px;"
+                    + "width: 50%;"
+                    + "border:2px solid black;}"
+                    + "td{"
+                    + "padding: 10px;"
+                    + "text-align: center"
+                    + "/*width:50%;*/}"
+                    + "input{"
+                    + "width:400px;}"
+                    + "button{"
+                    + "color: white;"
+                    + "background-color:brown;"
+                    + "border:2px solid black;}"
+                    + "h1{"
+                    + "color: brown;"
+                    + "border-bottom: 3px solid black;"
+                    + "padding-bottom: 15px;"
+                    + "font-weight:1000;}"
+                    + "</style>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Calculate at " + request.getContextPath() + "</h1>");
+            out.println("<div class=\"cal\" align=\"center\">"
+                    + "<h1>Calculator</h1>"
+                    + "<table class=\"set\" border=\"1\" cellspacing=0>"
+                    + "<tr>"
+                    + "<td>Principal Amount (₹)</td>"
+                    + "<td>"+request.getParameter("pa")+"</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<td>Interest Rate</td>"
+                    + "<td>"+request.getParameter("ir")+"</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<td>Year</td>"
+                    + "<td>"+request.getParameter("year")+"</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<td>Month</td>"
+                    + "<td>"+request.getParameter("month")+"</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<td>Compound Interest</td>"
+                    + "<td>"+request.getParameter("ci")+"</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<td>Answer</td>"
+                    + "<td style=\"color:brown;\"><b>12</b></td>"
+                    + "</tr>"
+                    + "</table>"
+                    + "</div>");
             out.println("</body>");
             out.println("</html>");
         }
