@@ -43,7 +43,7 @@
     </head>
     <body>
         <div class="cal" align="center">
-            <form method="POST" action="Calculate">
+            <form method="POST" action="Calculate" onsubmit="return validateform()">
                 <h1>Calculator</h1>
                 <table class="set">
                     <tr>
@@ -85,5 +85,15 @@
                 </table>
             </form>
         </div>
+        <script type="text/javascript">  
+            function validateform(){  
+                var pa = document.getElementById("pa").value;
+                var num_pattern = /^[0-9]{20}$/;
+                if(!pa.match(num_pattern)){
+                    alert("In Principal amount Invalid Input");
+                    return false;
+                }
+            }
+        </script>
     </body>
 </html>
