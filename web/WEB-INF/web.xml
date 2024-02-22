@@ -4,9 +4,17 @@
         <servlet-name>CompoundInterestServlet</servlet-name>
         <servlet-class>CompoundInterestServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Calculate</servlet-name>
+        <servlet-class>Calculate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CompoundInterestServlet</servlet-name>
         <url-pattern>/CompoundInterestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Calculate</servlet-name>
+        <url-pattern>/Calculate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
