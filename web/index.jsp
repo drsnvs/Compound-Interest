@@ -48,34 +48,34 @@
                 <table class="set">
                     <tr>
                         <td>Principal Amount (₹)</td>
-                        <td><input type="number" id="pa" name="pa" maxlength="5" placeholder="Enter principal amount"></td>
+                        <td><input type="number" id="pa" name="pa" placeholder="Enter principal amount"></td>
                     </tr>
                     <tr>
                         <td>Interest Rate</td>
-                        <td><input type="number" id="ir" name="ir" placeholder="Enter interest rate"></td>
+                        <td><input type="number" step="0.01" id="ir" name="ir" placeholder="Enter interest rate"></td>
                     </tr>
                     <tr>
                         <td>Year</td>
-                        <td><input type="number" id="year" name="year" placeholder="Enter year"></td>
+                        <td><input type="number" id="year" name="year" max=100 placeholder="Enter year"></td>
                     </tr>
                     <tr>
                         <td>Month</td>
-                        <td><input type="number" id="month" name="month" placeholder="Enter month"></td>
+                        <td><input type="number" id="month" name="month" max=12 placeholder="Enter month"></td>
                     </tr>
                     <tr>
                         <td>Compound Interest</td>
                         <td>
                             <select name="ci">
-                                <option id="ci">Daily(365/year)</option>
-                                <option id="ci">Daily(360/year)</option>
-                                <option id="ci">Weekly(52/year)</option>
-                                <option id="ci">Bi-weekly(26/year)</option>
-                                <option id="ci">Half-monthly(24/year)</option>
-                                <option id="ci">Monthly(12/year)</option>
-                                <option id="ci">Bi-monthly(6/year)</option>
-                                <option id="ci">Quarterly(4/year)</option>
-                                <option id="ci">Half-yearly(2/year)</option>
-                                <option id="ci">yearly(1/year)</option>
+                                <option value=365 id="ci">Daily(365/year)</option>
+                                <option value=360 id="ci">Daily(360/year)</option>
+                                <option value=52 id="ci">Weekly(52/year)</option>
+                                <option value=26 id="ci">Bi-weekly(26/year)</option>
+                                <option value=12 id="ci">Monthly(12/year)</option>
+                                <option value=24 id="ci">Half-monthly(24/year)</option>
+                                <option value=6 id="ci">Bi-monthly(6/year)</option>
+                                <option value=4 id="ci">Quarterly(4/year)</option>
+                                <option value=2 id="ci">Half-yearly(2/year)</option>
+                                <option value=1 id="ci">yearly(1/year)</option>
                             </select>
                         </td>
                     </tr>
@@ -88,9 +88,21 @@
         <script type="text/javascript">  
             function validateform(){  
                 var pa = document.getElementById("pa").value;
-                var num_pattern = /^[0-9]{20}$/;
+                var ir = document.getElementById("ir").value;
+                var year = document.getElementById("year").value;
+                var month = document.getElementById("month").value;
+                var num_pattern = /^[0-9]{1,20}$/;
+//                var date_pattern = /^\.\d{1,2}$/;
                 if(!pa.match(num_pattern)){
-                    alert("In Principal amount Invalid Input");
+                    alert("Fill up Principal amount");
+                    return false;
+                }
+                if(ir==""){
+                    alert("Enter Interest rate");
+                    return false;
+                }
+                if(year == ""){
+                    alert("Enter year");
                     return false;
                 }
             }

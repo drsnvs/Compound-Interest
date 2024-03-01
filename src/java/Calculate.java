@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,19 @@ public class Calculate extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            double principal = Double.parseDouble(request.getParameter("pa"));
+            double rate = Double.parseDouble(request.getParameter("ir"));
+            int months = Integer.parseInt(request.getParameter("month"));
+            int years = Integer.parseInt(request.getParameter("year"));
+            
+            int compoundInterval = Integer.parseInt(request.getParameter("ci"));
+            double timeInMonths = years * 12 + months;
+            double timeInYears = timeInMonths / 12.0;
+
+            double compoundInterest = principal * Math.pow(1 + rate / (compoundInterval * 100), compoundInterval * timeInYears);
+
+            DecimalFormat df = new DecimalFormat("#.##");
+            compoundInterest = Double.parseDouble(df.format(compoundInterest));
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -69,7 +83,7 @@ public class Calculate extends HttpServlet {
                     + "<td>"+request.getParameter("pa")+"</td>"
                     + "</tr>"
                     + "<tr>"
-                    + "<td>Interest Rate</td>"
+                    + "<td>Interest Rate (%)</td>"
                     + "<td>"+request.getParameter("ir")+"</td>"
                     + "</tr>"
                     + "<tr>"
@@ -79,14 +93,10 @@ public class Calculate extends HttpServlet {
                     + "<tr>"
                     + "<td>Month</td>"
                     + "<td>"+request.getParameter("month")+"</td>"
-                    + "</tr>"
-                    + "<tr>"
-                    + "<td>Compound Interest</td>"
-                    + "<td>"+request.getParameter("ci")+"</td>"
-                    + "</tr>"
+                    
                     + "<tr>"
                     + "<td>Answer</td>"
-                    + "<td style=\"color:brown;\"><b>12</b></td>"
+                    + "<td style=\"color:brown;\"><b>"+compoundInterest+"</b></td>"
                     + "</tr>"
                     + "</table>"
                     + "</div>");
